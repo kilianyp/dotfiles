@@ -1,0 +1,31 @@
+
+[color]
+    ui = true
+
+[alias]
+    lol = log --pretty=oneline --abbrev-commit --graph --decorate
+    lola = log --pretty=oneline --abbrev-commit --graph --decorate --all
+    lo = log --graph     --summary --decorate --all
+    pullr = pull --rebase
+    ai = add --interactive
+    ap = add --patch
+    ca = commit --all
+    co = checkout
+    cop = checkout -p
+    cp = cherry-pick
+    s = status
+    b = branch
+    l = log
+    c = commit
+    a = add
+    d = diff
+    dc = diff --cached
+    ri = rebase -i --autosquash
+    ri8 = rebase -i HEAD^^^^^^^
+    wip = commit --all -m "wip"
+    fix = commit --amend -C HEAD
+    fixup = commit --fixup=HEAD
+    theirs = checkout --theirs
+    ours = checkout --ours
+    shm = diff-tree --no-commit-id --name-status -r
+    amend = commit --amend --reuse-message=HEAD
