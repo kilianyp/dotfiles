@@ -8,6 +8,7 @@ function doIt() {
 	rsync --exclude ".git/" \
 		--exclude "*.sh" \
 		--exclude "*.txt" \
+        --exclude "*.swp" \
 		--exclude "README.md" \
 		-avh --no-perms . ~;
 	source ~/.profile;

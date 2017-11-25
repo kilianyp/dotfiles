@@ -2,6 +2,7 @@
 
 
 git
+gitk
 curl
 build-essential
 cmake
@@ -14,6 +15,13 @@ vlc
 # for YouCompleteMe
 python-dev
 python3-dev
+
+# for compiling python through pyenv
+libreadline-dev
+libsqlite3-dev
+libssl-dev
+zlib1g-dev
+libz2-dev
 
 # for solarized-gnome
 dconf-cli

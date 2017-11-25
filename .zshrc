@@ -96,3 +96,8 @@ source $ZSH/oh-my-zsh.sh
 
 eval `dircolors ~/.dir_colors/dircolors`
 
+# pyenv directories
+export WORKON_HOME=~/.ve
+export PROJECT_HOME=~/Projects
+
+eval "$(pyenv init -)"
