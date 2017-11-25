@@ -1,0 +1,19 @@
+# run with apt-get install $(grep -vE "^\s*#" apt-packages.txt  | tr "\n" " ")
+
+
+git
+curl
+build-essential
+cmake
+file
+python-setuptools
+
+thunderbird
+vlc
+
+# for YouCompleteMe
+python-dev
+python3-dev
+
+# for solarized-gnome
+dconf-cli

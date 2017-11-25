@@ -1,0 +1,4 @@
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
+
