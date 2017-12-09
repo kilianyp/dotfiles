@@ -13,8 +13,8 @@ mkdir ~/.ve
 pyenv install 3.6.3
 pyenv install 2.7.14
 
-pyenv virtualenv 3.6.3 jupyter3
-pyenv virtualenv 2.7.14 ipython2
+pyenv virtualenv --system-site-packages 3.6.3 jupyter3
+pyenv virtualenv --system-site-packages 2.7.14 ipython2
 
 # current initialization does not affect shell scripts
 eval "$(pyenv init -)"
