@@ -1,4 +1,6 @@
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
 export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
-
+PATH="/usr/local/MATLAB/R2017b/bin:$PATH"
+PATH="$CUDA_HOME:$PATH"
+PATH="$PATH:/usr/local/cuda/bin"
