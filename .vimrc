@@ -34,10 +34,12 @@ Bundle 'ConradIrwin/vim-bracketed-paste'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'haya14busa/vim-poweryank'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 
 " Languages
 Bundle 'scrooloose/syntastic'
-"Bundle 'nvie/vim-flake8'
+Bundle 'nvie/vim-flake8'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'JuliaLang/julia-vim'
 Bundle 'dag/vim-fish'
@@ -316,6 +318,11 @@ if 'VIRTUAL_ENV' in os.environ:
         sys.path[:0] = new_sys_path
 EOF
 endif
+
+" Python: set default linter
+let g:syntastic_python_checkers = ['flake8']
+" Program to use for evaluating python code
+let g:python3_host_prog = '~/.pyenv/versions/flake8/bin/python'
 
 " PTX: (Nvidia's gpu assembler) tab=8 because 4 looks ugly as fuck.
 au BufNewFile,BufRead *.ptx set tabstop=8
