@@ -9,7 +9,7 @@ filetype off
 set shell=bash
 
 " Load vundle
-set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 " let Vundle manage Vundle
@@ -26,7 +26,10 @@ Bundle 'gmarik/vundle'
 Bundle 'kana/vim-arpeggio'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
+" brackets
 Bundle 'tpope/vim-surround'
+" sets some defaults
+Bundle 'tpope/vim-sensible'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'wesQ3/vim-windowswap'
 " See https://cirw.in/blog/bracketed-paste
@@ -36,10 +39,11 @@ Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'haya14busa/vim-poweryank'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Languages
-Bundle 'scrooloose/syntastic'
 Bundle 'nvie/vim-flake8'
+Bundle 'scrooloose/syntastic'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'JuliaLang/julia-vim'
 Bundle 'dag/vim-fish'
@@ -77,6 +81,8 @@ set t_Co=16                " See http://stackoverflow.com/a/5561823
 let g:solarized_termcolors=16
 set background=dark        " We are using dark background in vim
 colorscheme solarized      " rock on
+
+let g:airline_solarized_bg='dark'
 
 set cursorline             " have a line indicate the cursor location
 set ruler                  " show the cursor position all the time
@@ -172,7 +178,7 @@ call arpeggio#map('i', '', 1, 'jk', '<Esc>')
 
 " jo opens the ctrl-p file opener, fe the NERDTree.
 call arpeggio#map('niv', '', 1, 'jo', ':CtrlP<cr>')
-call arpeggio#map('niv', '', 1, 'fe', ':NERDTreeFocus<cr>')
+call arpeggio#map('niv', '', 1, 'ft', ':NERDTreeFocus<cr>')
 
 " jc toggles the current line's comment state.
 call arpeggio#map('nv', '', 1, 'jc', '<leader>c<space>')
@@ -211,6 +217,12 @@ noremap <Esc>A <C-W>k
 noremap <Esc>C <C-W>l
 noremap <Esc>D <C-W>h
 noremap <Esc>B <C-W>j
+
+" turn of arrow keys in escape mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 " Next and Last
 " -------------
@@ -259,6 +271,14 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Sensible "current dir" behaviour for ctrlp. ("nearest .git, ...")
 let g:ctrlp_working_path_mode = 'r'
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Speedup stackoverflow.com/questions/21346068/
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 "let g:flake8_show_in_file=1
 
@@ -319,10 +339,10 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 endif
 
-" Python: set default linter
+" Python: Flake8 support by changing binary
+let g:python3_host_prog = '/home/pfeiffer/.pyenv/versions/flake8/bin/python'
 let g:syntastic_python_checkers = ['flake8']
-" Program to use for evaluating python code
-let g:python3_host_prog = '~/.pyenv/versions/flake8/bin/python'
+
 
 " PTX: (Nvidia's gpu assembler) tab=8 because 4 looks ugly as fuck.
 au BufNewFile,BufRead *.ptx set tabstop=8
@@ -343,3 +363,4 @@ autocmd FileType fish setlocal foldmethod=expr
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
