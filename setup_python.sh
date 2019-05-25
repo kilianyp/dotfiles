@@ -9,13 +9,13 @@ mkdir ~/.ve
 # TODO subject of change
 # set dependencies to brew installation
 
-# latest python 11/2017
-pyenv install 3.6.3
-pyenv install 2.7.14
+# latest python 05/2019
+pyenv install 3.7.3
+pyenv install 2.7.16
 
-pyenv virtualenv --system-site-packages 3.6.3 jupyter3
-pyenv virtualenv --system-site-packages 2.7.14 ipython2
-pyenv virtualenv --system-site-packages 3.6.3 flake8
+pyenv virtualenv --system-site-packages 3.7.3 jupyter3
+pyenv virtualenv --system-site-packages 2.7.16 ipython2
+pyenv virtualenv --system-site-packages 3.7.3 flake8
 
 # current initialization does not affect shell scripts
 eval "$(pyenv init -)"
@@ -34,4 +34,4 @@ pyenv activate flake8
 pip install flake8
 pyenv deactivate
 
-pyenv global 3.6.3 2.7.14 jupyter3 ipython2
+pyenv global 3.7.3 2.7.16 jupyter3 ipython2
