@@ -9,6 +9,8 @@ mkdir ~/.ve
 # TODO subject of change
 # set dependencies to brew installation
 
+# otherwise cannot install ycm for vim
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
 # latest python 11/2017
 pyenv install 3.6.3
 pyenv install 2.7.14
