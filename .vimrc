@@ -44,10 +44,11 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Languages
 Bundle 'nvie/vim-flake8'
 Bundle 'scrooloose/syntastic'
-Bundle 'plasticboy/vim-markdown'
 Bundle 'JuliaLang/julia-vim'
 Bundle 'dag/vim-fish'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
 
 " Fun, but not useful
 Bundle 'ehamberg/vim-cute-python'
