@@ -12,8 +12,8 @@ set shell=bash
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " Vundle help
 """"""""""""""
