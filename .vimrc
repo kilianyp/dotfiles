@@ -343,6 +343,7 @@ endif
 " Python: Flake8 support by changing binary
 let g:python3_host_prog = '/home/pfeiffer/.pyenv/versions/flake8/bin/python'
 let g:syntastic_python_checkers = ['flake8']
+let g:ycm_python_binary_path = 'python'
 
 
 " PTX: (Nvidia's gpu assembler) tab=8 because 4 looks ugly as fuck.
