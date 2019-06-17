@@ -43,7 +43,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " Languages
 Bundle 'nvie/vim-flake8'
-Bundle 'scrooloose/syntastic'
+Bundle 'w0rp/ale'
 Bundle 'JuliaLang/julia-vim'
 Bundle 'dag/vim-fish'
 Bundle 'kchmck/vim-coffee-script'
@@ -342,8 +342,8 @@ endif
 
 " Python: Flake8 support by changing binary
 let g:python3_host_prog = '/home/pfeiffer/.pyenv/versions/flake8/bin/python'
-let g:syntastic_python_checkers = ['flake8']
 let g:ycm_python_binary_path = 'python'
+let g:ale_linters = {'python': ['flake8']}
 
 
 " PTX: (Nvidia's gpu assembler) tab=8 because 4 looks ugly as fuck.
