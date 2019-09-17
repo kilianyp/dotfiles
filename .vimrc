@@ -6,7 +6,7 @@ set nocompatible
 filetype off
 
 " Syntastic (and possibly other plugins?) don't work well with fish.
-set shell=bash
+set shell=zsh
 
 " Load vundle
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -39,7 +39,7 @@ Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'haya14busa/vim-poweryank'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
-Plugin 'christoomey/vim-tmux-navigator'
+Bundle 'christoomey/vim-tmux-navigator'
 
 " Languages
 Bundle 'nvie/vim-flake8'
@@ -161,12 +161,12 @@ autocmd VimEnter * if exists('fugitive') | set statusline+=\ %{fugitive#statusli
 " ==========================================================
 
 " Better automatic brackets
-inoremap        (  ()<Left>
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-inoremap        {  {}<Left>
-inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-inoremap        [  []<Left>
-inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+" "inoremap        (  ()<Left>
+" "inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+" "inoremap        {  {}<Left>
+" "inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+" "inoremap        [  []<Left>
+" "inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 
 call arpeggio#load()
 
@@ -344,6 +344,7 @@ endif
 let g:python3_host_prog = '/home/pfeiffer/.pyenv/versions/flake8/bin/python'
 let g:ycm_python_binary_path = 'python'
 let g:ale_linters = {'python': ['flake8']}
+let g:airline#extensions#ale#enabled = 1
 
 
 " PTX: (Nvidia's gpu assembler) tab=8 because 4 looks ugly as fuck.
