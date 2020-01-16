@@ -49,6 +49,7 @@ Bundle 'dag/vim-fish'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
+Bundle 'rust-lang/rust.vim'
 
 " Fun, but not useful
 Bundle 'ehamberg/vim-cute-python'
@@ -159,6 +160,9 @@ autocmd VimEnter * if exists('fugitive') | set statusline+=\ %{fugitive#statusli
 " ==========================================================
 " Keymaps
 " ==========================================================
+"
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Better automatic brackets
 " "inoremap        (  ()<Left>
