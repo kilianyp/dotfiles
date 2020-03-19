@@ -179,7 +179,7 @@ call arpeggio#load()
 " Or just use a saner distro, like arch...
 
 " j and k at the same time instead of escape to leave edit mode
-call arpeggio#map('i', '', 1, 'jk', '<Esc>')
+call arpeggio#map('iv', '', 1, 'jk', '<Esc>')
 
 " jo opens the ctrl-p file opener, fe the NERDTree.
 call arpeggio#map('niv', '', 1, 'jo', ':CtrlP<cr>')
