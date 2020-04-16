@@ -50,6 +50,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'rust-lang/rust.vim'
+Bundle 'fatih/vim-go'
 
 " Fun, but not useful
 Bundle 'ehamberg/vim-cute-python'
