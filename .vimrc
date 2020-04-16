@@ -278,6 +278,9 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 " Sensible "current dir" behaviour for ctrlp. ("nearest .git, ...")
 let g:ctrlp_working_path_mode = 'r'
 
+" Open same file again"
+let g:ctrlp_switch_buffer = 0
+
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Speedup stackoverflow.com/questions/21346068/
