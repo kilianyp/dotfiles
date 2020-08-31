@@ -317,3 +317,6 @@ bind ^A select-pane -t :.+
 
 
 set -g @resurrect-capture-pane-contents 'on'
+set-option -g default-shell /bin/sh
+set-option -g default-command /bin/zsh
+
