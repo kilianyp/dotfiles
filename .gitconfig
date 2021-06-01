@@ -32,3 +32,5 @@
     ours = checkout --ours
     shm = diff-tree --no-commit-id --name-status -r
     amend = commit --amend --reuse-message=HEAD
+[pull]
+	rebase = true
