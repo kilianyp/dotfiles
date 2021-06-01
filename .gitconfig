@@ -1,6 +1,6 @@
 [user]
     name = Kilian Pfeiffer
-    email = kilian.pfeiffer@rwth-aachen.de
+    email = kilian@recogni.com
 
 [color]
     ui = true
@@ -34,3 +34,6 @@
     amend = commit --amend --reuse-message=HEAD
 [pull]
 	rebase = true
+
+[core]
+	excludesfile = /Users/kilian/.gitignore
