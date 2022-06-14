@@ -32,8 +32,9 @@
     ours = checkout --ours
     shm = diff-tree --no-commit-id --name-status -r
     amend = commit --amend --reuse-message=HEAD
+    readd = update-index --again
 [pull]
 	rebase = true
 
 [core]
-	excludesfile = /Users/kilian/.gitignore
+	excludesfile = ~/.gitignore
