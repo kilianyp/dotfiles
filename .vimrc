@@ -53,7 +53,6 @@ Bundle 'rust-lang/rust.vim'
 Bundle 'fatih/vim-go'
 
 " Fun, but not useful
-Bundle 'ehamberg/vim-cute-python'
 Bundle 'altercation/vim-colors-solarized'
 
 " Why is this not run automatically?
