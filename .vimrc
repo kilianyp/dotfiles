@@ -439,3 +439,8 @@ endfunction
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
+" Spelling
+set spelllang=en_us
+set spell
+hi SpellBad cterm=underline
