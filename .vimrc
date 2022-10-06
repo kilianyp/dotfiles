@@ -52,6 +52,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'rust-lang/rust.vim'
 Bundle 'fatih/vim-go'
+Bundle 'kkoomen/vim-doge'
 
 " Fun, but not useful
 Bundle 'altercation/vim-colors-solarized'
@@ -433,6 +434,8 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+let g:doge_doc_standard_python = 'numpy'
 
 " ===========================================================
 " Load local vimrc file if there is one
