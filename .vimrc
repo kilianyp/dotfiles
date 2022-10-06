@@ -40,6 +40,7 @@ Bundle 'haya14busa/vim-poweryank'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'easymotion/vim-easymotion'
 
 " Languages
 Bundle 'nvie/vim-flake8'
