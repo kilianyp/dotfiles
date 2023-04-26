@@ -460,3 +460,17 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
 " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
 autocmd FileChangedShellPost *
     \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+
+
+" <Leader>f{char} to move to {char}
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+nmap <Leader>w <Plug>(easymotion-overwin-w)
