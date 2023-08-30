@@ -40,3 +40,7 @@
     autoSetupRemote = true
 [core]
 	excludesfile = ~/.gitignore
+[rerere]
+	enabled = 1
+[safe]
+	directory = *
