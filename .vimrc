@@ -9,56 +9,53 @@ filetype off
 set shell=zsh
 
 " Load vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Vundle help
-""""""""""""""
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+call plug#begin()
 
 " System
-Bundle 'kana/vim-arpeggio'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
+Plug 'kana/vim-arpeggio'
+Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
+Plug 'junegunn/fzf.vim' " needed for previews
+Plug 'antoinemadec/coc-fzf'
+Plug 'scrooloose/nerdcommenter'
 " brackets
-Bundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " sets some defaults
-Bundle 'tpope/vim-sensible'
-Bundle 'neoclide/coc.nvim'
-Bundle 'wesQ3/vim-windowswap'
+Plug 'tpope/vim-sensible'
+Plug 'neoclide/coc.nvim'
+Plug 'wesQ3/vim-windowswap'
 " See https://cirw.in/blog/bracketed-paste
-Bundle 'ConradIrwin/vim-bracketed-paste'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Xuyuanp/nerdtree-git-plugin'
-Bundle 'haya14busa/vim-poweryank'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'easymotion/vim-easymotion'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'haya14busa/vim-poweryank'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-fugitive'
 
 " Languages
-Bundle 'nvie/vim-flake8'
-Bundle 'w0rp/ale'
-Bundle 'JuliaLang/julia-vim'
-Bundle 'dag/vim-fish'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'godlygeek/tabular'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'rust-lang/rust.vim'
-Bundle 'fatih/vim-go'
-Bundle 'kkoomen/vim-doge'
+Plug 'nvie/vim-flake8'
+Plug 'w0rp/ale'
+Plug 'JuliaLang/julia-vim'
+Plug 'dag/vim-fish'
+Plug 'kchmck/vim-coffee-script'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go'
+Plug 'kkoomen/vim-doge'
+
+Plug 'knsh14/vim-github-link'
 
 " Fun, but not useful
-Bundle 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 " Why is this not run automatically?
-source ~/.vim/bundle/vim-colors-solarized/autoload/togglebg.vim
+source ~/.vim/plugged/vim-colors-solarized/autoload/togglebg.vim
+
+call plug#end()
+
 " Toggle background using F5
 
 " Careful with this: http://stackoverflow.com/a/16433928
@@ -98,9 +95,6 @@ set list
 
 set number                 " Display line numbers
 set numberwidth=1          " using only 1 column (and 1 space) while possible
-if exists('+relativenumber')
-    set relativenumber     " Display relative line numbers
-endif
 set title                  " show title in console title bar
 
 """ Moving Around
@@ -208,6 +202,8 @@ call arpeggio#map('nv', '', 1, 'fl', '$')
 
 " Makes it easy to un-highlight the previous search.
 call arpeggio#map('nv', '', 1, 'fw', ':noh<cr>')
+
+let g:arpeggio_timeoutlen=70
 
 " Run pep8
 "let g:pep8_map='<leader>8'
@@ -385,16 +381,23 @@ else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
+" other plugin before putting this into your config
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -457,10 +460,7 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
     \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 
 " Notification after file change
-" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-autocmd FileChangedShellPost *
-    \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-
+set autoread
 
 
 " <Leader>f{char} to move to {char}
@@ -474,3 +474,8 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " Move to word
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+nmap <silent>  <C-p> :Files <CR>
+
+" ignore .gitignore
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
