@@ -31,8 +31,9 @@
     theirs = checkout --theirs
     ours = checkout --ours
     shm = diff-tree --no-commit-id --name-status -r
-    amend = commit --amend --reuse-message=HEAD
+    # amend = commit --amend --reuse-message=HEAD
     readd = update-index --again
+    # difff = "!f() {commit=$(git merge-base \"$1\" HEAD); git diff \"$1\" $commit }"
 [pull]
 	rebase = true
 
