@@ -179,20 +179,14 @@ call arpeggio#load()
 call arpeggio#map('iv', '', 1, 'jk', '<Esc>')
 
 " jo opens the ctrl-p file opener, fe the NERDTree.
-call arpeggio#map('niv', '', 1, 'jo', ':CtrlP<cr>')
-call arpeggio#map('niv', '', 1, 'ft', ':NERDTreeFocus<cr>')
+" call arpeggio#map('niv', '', 1, 'jo', ':CtrlP<cr>')
+" call arpeggio#map('niv', '', 1, 'ft', ':NERDTreeFocus<cr>')
 
 " jc toggles the current line's comment state.
 call arpeggio#map('nv', '', 1, 'jc', '<leader>c<space>')
 call arpeggio#map('i', '', 1, 'jc', '<ESC><leader>c<space>a')
 " f+n for stopping highlighting of search results.
 call arpeggio#map('n', '', 1, 'fn', ':noh<CR>')
-
-" map w+hjkl to window movement.
-call arpeggio#map('nv', '', 1, 'wh', '<C-W>h')
-call arpeggio#map('nv', '', 1, 'wj', '<C-W>j')
-call arpeggio#map('nv', '', 1, 'wk', '<C-W>k')
-call arpeggio#map('nv', '', 1, 'wl', '<C-W>l')
 
 " map f+hjkl to home/pgup/down/end
 call arpeggio#map('nv', '', 1, 'fh', '^')
@@ -272,20 +266,6 @@ cmap w!! w !sudo tee > /dev/null %
 "let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 " Doesn't the name say it all already?
 let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" Sensible "current dir" behaviour for ctrlp. ("nearest .git, ...")
-let g:ctrlp_working_path_mode = 'r'
-
-" Open same file again"
-let g:ctrlp_switch_buffer = 0
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-" Speedup stackoverflow.com/questions/21346068/
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
 
 "let g:flake8_show_in_file=1
 
@@ -424,6 +404,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <C-W>d :call CocAction('jumpDefinition', 'vsplit')<CR>
+
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
